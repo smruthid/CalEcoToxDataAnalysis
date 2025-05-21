@@ -39,7 +39,7 @@ with open(csv_filename, mode="w", newline="", encoding="utf-8") as f:
                 rows = table.find_all("tr")[1:]
                 for row in rows:
                     chemical_td = get_td_text(row, 'views-field-field-ecotox-chemical-1')
-                    endpoint_value_td = get_td_text(row, 'views-field-field-ecotox-endpt-value')
+                    endpoint_value_td = get_td_text(row, 'views-field-field-ecotox-endpoint-value')
                     endpoint_description_td = get_td_text(row, 'views-field-field-ecotox-endpt-description')
                     range_td = get_td_text(row, 'views-field-field-ecotox-range')
                     sex_td = get_td_text(row, 'views-field-field-ecotox-sex')
