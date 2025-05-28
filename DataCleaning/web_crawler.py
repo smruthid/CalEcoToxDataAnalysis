@@ -8,6 +8,7 @@ def get_td_text(row, class_name):
     return td.text.strip() if td else ""
 
 csv_filename = "toxicity_data.csv"
+num_rows = 1
 with open(csv_filename, mode="w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
     table_header = ["Animal Name", "Chemical", "Endpoint Value", "Endpoint Description", "Range", "Sex", "Life Cycle Stage", "Location", "Sample Size", "Tox Exposure", "Toxicity Endpoint Type", "Tox Exposure Duration", "Tox Exposure Technique", "Type"]
@@ -23,7 +24,6 @@ with open(csv_filename, mode="w", newline="", encoding="utf-8") as f:
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, "html.parser")
         view_groupings = soup.find_all("div", class_="view-grouping")
-        rows_len = 0
         for idx, group in enumerate(view_groupings, start=1):
             #Find the name of the animal
             header = group.find("div", class_="view-grouping-header")
@@ -32,6 +32,9 @@ with open(csv_filename, mode="w", newline="", encoding="utf-8") as f:
                 a_text = a_tag.get_text(strip=True)
             else:
                 a_text = ""
+
+            print(f"\tAnimal Name: {a_text}")
+            print(f"\t\trow {num_rows+1}-", end="")
 
             content = group.find("div", class_="view-grouping-content")
             tables = content.find_all("table")
@@ -69,3 +72,5 @@ with open(csv_filename, mode="w", newline="", encoding="utf-8") as f:
                         type_td
                     ]
                     writer.writerow(row_data)
+                    num_rows += 1
+            print(f"{num_rows}")

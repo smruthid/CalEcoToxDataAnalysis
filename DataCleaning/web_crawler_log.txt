@@ -1,0 +1,915 @@
+
+
+Page Num:  0
+	Animal Name: Lithobates catesbeianus (Bullfrog)
+		row 2-18
+	Animal Name: Vireo bellii (Bell's Vireo)
+		row 19-30
+	Animal Name: Sylvilagus bachmani (Brush Rabbit)
+		row 31-37
+	Animal Name: Microtus californicus (California Vole)
+		row 38-41
+
+
+Page Num:  1
+	Animal Name: Microtus californicus (California Vole)
+		row 42-42
+	Animal Name: Scapanus latimanus (Broad-footed Mole)
+		row 43-44
+	Animal Name: Thamnophis sirtalis (Common Garter Snake)
+		row 45-45
+	Animal Name: Ensatina eschscholtzii (Ensatina)
+		row 46-52
+	Animal Name: Dicamptodon ensatus (California Giant Salamander)
+		row 53-54
+	Animal Name: Pseudacris regilla (Pacific Treefrog)
+		row 55-56
+	Animal Name: Rana aurora (Northern Red-legged Frog)
+		row 57-58
+	Animal Name: Anaxyrus boreas (Western Toad)
+		row 59-69
+	Animal Name: Uma inornata (Coachella  Valley Fringe-toed Lizard)
+		row 70-72
+	Animal Name: Gopherus agassizi (Desert Tortoise)
+		row 73-81
+
+
+Page Num:  2
+	Animal Name: Gopherus agassizi (Desert Tortoise)
+		row 82-93
+	Animal Name: Thamnophis gigas (Giant Garter Snake)
+		row 94-100
+	Animal Name: Xantusia riversiana (Island Night Lizard)
+		row 101-103
+	Animal Name: Pituophis melanoleucus (Pine Snake)
+		row 104-121
+
+
+Page Num:  3
+	Animal Name: Pituophis melanoleucus (Pine Snake)
+		row 122-124
+	Animal Name: Uta stansburiana (Sideblotched Lizard)
+		row 125-131
+	Animal Name: Sceloporus occidentalis (Western Fence Lizard)
+		row 132-132
+	Animal Name: Actinemys marmorata (Western Pond Turtle)
+		row 133-136
+	Animal Name: Eumeces skiltonianus (Western Skink)
+		row 137-143
+	Animal Name: Falco sparverius (American Kestrel)
+		row 144-148
+	Animal Name: Pelecanus occidentalis (Brown Pelican)
+		row 149-161
+
+
+Page Num:  4
+	Animal Name: Pelecanus occidentalis (Brown Pelican)
+		row 162-172
+	Animal Name: Athene cunicularia (Burrowing Owl)
+		row 173-201
+
+
+Page Num:  5
+	Animal Name: Athene cunicularia (Burrowing Owl)
+		row 202-232
+	Animal Name: Rallus longirostris (Clapper Rail)
+		row 233-237
+	Animal Name: Phalacrocorax auritus (Double-crested Cormorant)
+		row 238-241
+
+
+Page Num:  6
+	Animal Name: Phalacrocorax auritus (Double-crested Cormorant)
+		row 242-270
+	Animal Name: Bubo virginianus (Great Horned Owl)
+		row 271-281
+
+
+Page Num:  7
+	Animal Name: Bubo virginianus (Great Horned Owl)
+		row 282-282
+	Animal Name: Charadrius vociferus (Killdeer)
+		row 283-284
+	Animal Name: Sterna antillarum (Least Tern)
+		row 285-309
+	Animal Name: Lanius ludovicianus (Loggerhead Shrike)
+		row 310-321
+
+
+Page Num:  8
+	Animal Name: Lanius ludovicianus (Loggerhead Shrike)
+		row 322-328
+	Animal Name: Colaptes auratus (Northern Flicker)
+		row 329-341
+	Animal Name: Falco peregrinus (Peregrine Falcon)
+		row 342-361
+
+
+Page Num:  9
+	Animal Name: Falco peregrinus (Peregrine Falcon)
+		row 362-363
+	Animal Name: Charadrius nivosus (Snowy Plover)
+		row 364-401
+
+
+Page Num:  10
+	Animal Name: Charadrius nivosus (Snowy Plover)
+		row 402-407
+	Animal Name: Melospiza melodia (Song Sparrow)
+		row 408-411
+	Animal Name: Aechmophorus occidentalis (Western Grebe)
+		row 412-417
+	Animal Name: Sturnella neglecta (Western Meadowlark)
+		row 418-426
+	Animal Name: Empidonax traillii (Willow Flycatcher)
+		row 427-435
+	Animal Name: Spermophilus beecheyi (California Ground Squirrel)
+		row 436-437
+	Animal Name: Zalophus californianus (California Sea Lion)
+		row 438-441
+
+
+Page Num:  11
+	Animal Name: Zalophus californianus (California Sea Lion)
+		row 442-455
+	Animal Name: Canis latrans (Coyote)
+		row 456-481
+
+
+Page Num:  12
+	Animal Name: Canis latrans (Coyote)
+		row 482-486
+	Animal Name: Vulpes macrotis (Kit Fox)
+		row 487-495
+	Animal Name: Perognathus longimembris (Little Pocket Mouse)
+		row 496-496
+	Animal Name: Mustela frenata (Long-tailed Weasel)
+		row 497-500
+	Animal Name: Antrozous pallidus (Pallid Bat)
+		row 501-504
+	Animal Name: Reithrodontomys raviventris (Salt-marsh Harvest Mouse)
+		row 505-505
+	Animal Name: Dipodomys nitratoides (San Joaquin Kangaroo Rat)
+		row 506-506
+	Animal Name: Enhydra lutris (Sea Otter)
+		row 507-507
+	Animal Name: Mephitis mephitis (Striped Skunk)
+		row 508-514
+	Animal Name: Sorex ornatus (Ornate Shrew)
+		row 515-518
+	Animal Name: Oceanodroma homochroa (Ashy Storm Petrel)
+		row 519-521
+
+
+Page Num:  13
+	Animal Name: Oceanodroma homochroa (Ashy Storm Petrel)
+		row 522-537
+	Animal Name: Laterallus jamaicensis (California Black Rail)
+		row 538-561
+
+
+Page Num:  14
+	Animal Name: Laterallus jamaicensis (California Black Rail)
+		row 562-596
+	Animal Name: Ambystoma californiense (California Tiger Salamander)
+		row 597-597
+	Animal Name: Rana boylii (Foothill Yellow-Legged Frog)
+		row 598-601
+
+
+Page Num:  15
+	Animal Name: Rana boylii (Foothill Yellow-Legged Frog)
+		row 602-641
+
+
+Page Num:  16
+	Animal Name: Rana boylii (Foothill Yellow-Legged Frog)
+		row 642-651
+	Animal Name: Gillichthys mirabilis (Longjaw Mudsucker)
+		row 652-681
+
+
+Page Num:  17
+	Animal Name: Gillichthys mirabilis (Longjaw Mudsucker)
+		row 682-721
+
+
+Page Num:  18
+	Animal Name: Gillichthys mirabilis (Longjaw Mudsucker)
+		row 722-724
+	Animal Name: Turdus migratorius (American robin)
+		row 725-761
+
+
+Page Num:  19
+	Animal Name: Turdus migratorius (American robin)
+		row 762-801
+
+
+Page Num:  20
+	Animal Name: Turdus migratorius (American robin)
+		row 802-841
+
+
+Page Num:  21
+	Animal Name: Turdus migratorius (American robin)
+		row 842-879
+	Animal Name: Lasiurus cinereus (Hoary Bat)
+		row 880-881
+
+
+Page Num:  22
+	Animal Name: Lasiurus cinereus (Hoary Bat)
+		row 882-882
+	Animal Name: Myotis lucifugus (Little Brown Bat)
+		row 883-921
+
+
+Page Num:  23
+	Animal Name: Myotis lucifugus (Little Brown Bat)
+		row 922-961
+
+
+Page Num:  24
+	Animal Name: Myotis lucifugus (Little Brown Bat)
+		row 962-968
+	Animal Name: 
+		row 969-972
+	Animal Name: Lithobates catesbeianus
+		row 973-986
+	Animal Name: Peromyscus maniculatus
+		row 987-1001
+
+
+Page Num:  25
+	Animal Name: Lithobates catesbeianus
+		row 1002-1017
+	Animal Name: Peromyscus maniculatus
+		row 1018-1021
+	Animal Name: Falco sparverius
+		row 1022-1041
+
+
+Page Num:  26
+	Animal Name: Lithobates catesbeianus
+		row 1042-1064
+	Animal Name: Falco sparverius
+		row 1065-1079
+	Animal Name: Anas platyrhynchos
+		row 1080-1080
+	Animal Name: Zenaida macroura
+		row 1081-1081
+
+
+Page Num:  27
+	Animal Name: Falco sparverius
+		row 1082-1110
+	Animal Name: Peromyscus maniculatus
+		row 1111-1120
+	Animal Name: 
+		row 1121-1121
+
+
+Page Num:  28
+	Animal Name: Falco sparverius
+		row 1122-1139
+	Animal Name: Lithobates catesbeianus
+		row 1140-1143
+	Animal Name: Peromyscus maniculatus
+		row 1144-1154
+	Animal Name: Anas platyrhynchos
+		row 1155-1161
+
+
+Page Num:  29
+	Animal Name: Anas platyrhynchos
+		row 1162-1163
+	Animal Name: Peromyscus maniculatus
+		row 1164-1186
+	Animal Name: Lithobates catesbeianus
+		row 1187-1191
+	Animal Name: 
+		row 1192-1197
+	Animal Name: Athene cunicularia
+		row 1198-1201
+
+
+Page Num:  30
+	Animal Name: Athene cunicularia
+		row 1202-1204
+	Animal Name: Anas platyrhynchos
+		row 1205-1221
+	Animal Name: Antrozous pallidus
+		row 1222-1224
+	Animal Name: Vulpes macrotis ssp. arsipus
+		row 1225-1227
+	Animal Name: Phalacrocorax auritus
+		row 1228-1230
+	Animal Name: Rallus longirostris
+		row 1231-1236
+	Animal Name: 
+		row 1237-1237
+	Animal Name: Anaxyrus boreas
+		row 1238-1241
+
+
+Page Num:  31
+	Animal Name: Anaxyrus boreas
+		row 1242-1242
+	Animal Name: Phalacrocorax auritus
+		row 1243-1277
+	Animal Name: Dipodomys merriami
+		row 1278-1278
+	Animal Name: Taricha torosa
+		row 1279-1281
+
+
+Page Num:  32
+	Animal Name: Phalacrocorax auritus
+		row 1282-1282
+	Animal Name: Dipodomys merriami
+		row 1283-1285
+	Animal Name: Charadrius vociferus
+		row 1286-1289
+	Animal Name: 
+		row 1290-1291
+	Animal Name: Zenaida macroura
+		row 1292-1321
+
+
+Page Num:  33
+	Animal Name: Zenaida macroura
+		row 1322-1343
+	Animal Name: Pelecanus occidentalis ssp. californicus
+		row 1344-1346
+	Animal Name: Pelecanus occidentalis
+		row 1347-1351
+	Animal Name: Aechmophorus occidentalis
+		row 1352-1357
+	Animal Name: Spermophilus beecheyi
+		row 1358-1358
+	Animal Name: Pseudacris regilla
+		row 1359-1361
+
+
+Page Num:  34
+	Animal Name: Enhydra lutris
+		row 1362-1362
+	Animal Name: Falco sparverius
+		row 1363-1401
+
+
+Page Num:  35
+	Animal Name: Falco sparverius
+		row 1402-1405
+	Animal Name: Rallus longirostris ssp. obsoletus
+		row 1406-1406
+	Animal Name: Pituophis catenifer
+		row 1407-1407
+	Animal Name: Colaptes auratus
+		row 1408-1408
+	Animal Name: Anas platyrhynchos
+		row 1409-1412
+	Animal Name: Bubo virginianus
+		row 1413-1428
+	Animal Name: Lithobates catesbeianus
+		row 1429-1430
+	Animal Name: Lanius ludovicianus
+		row 1431-1437
+	Animal Name: Mephitis mephitis
+		row 1438-1439
+	Animal Name: Sterna antillarum
+		row 1440-1440
+	Animal Name: Zenaida macroura
+		row 1441-1441
+
+
+Page Num:  36
+	Animal Name: Anas platyrhynchos
+		row 1442-1472
+	Animal Name: Lanius ludovicianus
+		row 1473-1475
+	Animal Name: Canis latrans
+		row 1476-1479
+	Animal Name: Mephitis mephitis
+		row 1480-1480
+	Animal Name: Spermophilus beecheyi
+		row 1481-1481
+
+
+Page Num:  37
+	Animal Name: Canis latrans
+		row 1482-1483
+	Animal Name: Melospiza melodia
+		row 1484-1486
+	Animal Name: Anas platyrhynchos
+		row 1487-1514
+	Animal Name: Zenaida macroura
+		row 1515-1519
+	Animal Name: Bubo virginianus
+		row 1520-1520
+	Animal Name: 
+		row 1521-1521
+
+
+Page Num:  38
+	Animal Name: Anas platyrhynchos
+		row 1522-1561
+
+
+Page Num:  39
+	Animal Name: Anas platyrhynchos
+		row 1562-1601
+
+
+Page Num:  40
+	Animal Name: Anas platyrhynchos
+		row 1602-1641
+
+
+Page Num:  41
+	Animal Name: Anas platyrhynchos
+		row 1642-1675
+	Animal Name: Zalophus californianus
+		row 1676-1681
+
+
+Page Num:  42
+	Animal Name: Anas platyrhynchos
+		row 1682-1704
+	Animal Name: Pseudacris regilla
+		row 1705-1706
+	Animal Name: Lithobates catesbeianus
+		row 1707-1708
+	Animal Name: Rana aurora
+		row 1709-1710
+	Animal Name: Peromyscus maniculatus
+		row 1711-1711
+	Animal Name: Spermophilus beecheyi
+		row 1712-1712
+	Animal Name: Canis latrans
+		row 1713-1713
+	Animal Name: Zenaida macroura
+		row 1714-1714
+	Animal Name: Melospiza melodia
+		row 1715-1716
+	Animal Name: Dipodomys merriami
+		row 1717-1717
+	Animal Name: Anaxyrus boreas
+		row 1718-1718
+	Animal Name: 
+		row 1719-1720
+	Animal Name: Bubo virginianus
+		row 1721-1721
+
+
+Page Num:  43
+	Animal Name: Bubo virginianus
+		row 1722-1722
+	Animal Name: Anas platyrhynchos
+		row 1723-1761
+
+
+Page Num:  44
+	Animal Name: Anas platyrhynchos
+		row 1762-1801
+
+
+Page Num:  45
+	Animal Name: Anas platyrhynchos
+		row 1802-1841
+
+
+Page Num:  46
+	Animal Name: Anas platyrhynchos
+		row 1842-1881
+
+
+Page Num:  47
+	Animal Name: Anas platyrhynchos
+		row 1882-1921
+
+
+Page Num:  48
+	Animal Name: Anas platyrhynchos
+		row 1922-1959
+	Animal Name: Aechmophorus occidentalis
+		row 1960-1961
+
+
+Page Num:  49
+	Animal Name: Anas platyrhynchos
+		row 1962-2001
+
+
+Page Num:  50
+	Animal Name: Anas platyrhynchos
+		row 2002-2020
+	Animal Name: Falco peregrinus
+		row 2021-2040
+	Animal Name: 
+		row 2041-2041
+
+
+Page Num:  51
+	Animal Name: Falco peregrinus
+		row 2042-2078
+	Animal Name: Melospiza melodia ssp. pusillula
+		row 2079-2079
+	Animal Name: Melospiza melodia
+		row 2080-2081
+
+
+Page Num:  52
+	Animal Name: Canis latrans
+		row 2082-2084
+	Animal Name: Ambystoma macrodactylum
+		row 2085-2088
+	Animal Name: Dicamptodon tenebrosus
+		row 2089-2089
+	Animal Name: Lithobates catesbeianus
+		row 2090-2092
+	Animal Name: Pseudacris regilla
+		row 2093-2104
+	Animal Name: Peromyscus maniculatus
+		row 2105-2106
+	Animal Name: Enhydra lutris ssp. nereis
+		row 2107-2108
+	Animal Name: Pelecanus occidentalis
+		row 2109-2109
+	Animal Name: Phalacrocorax auritus
+		row 2110-2116
+	Animal Name: Anas platyrhynchos
+		row 2117-2117
+	Animal Name: Falco sparverius
+		row 2118-2121
+
+
+Page Num:  53
+	Animal Name: Falco sparverius
+		row 2122-2151
+	Animal Name: Phalacrocorax auritus
+		row 2152-2161
+
+
+Page Num:  54
+	Animal Name: Phalacrocorax auritus
+		row 2162-2162
+	Animal Name: Athene cunicularia
+		row 2163-2163
+	Animal Name: Bubo virginianus
+		row 2164-2170
+	Animal Name: Anas platyrhynchos
+		row 2171-2201
+
+
+Page Num:  55
+	Animal Name: Anas platyrhynchos
+		row 2202-2239
+	Animal Name: Bubo virginianus
+		row 2240-2240
+	Animal Name: 
+		row 2241-2241
+
+
+Page Num:  56
+	Animal Name: Anas platyrhynchos
+		row 2242-2281
+
+
+Page Num:  57
+	Animal Name: Anas platyrhynchos
+		row 2282-2311
+	Animal Name: 
+		row 2312-2312
+	Animal Name: Lanius ludovicianus
+		row 2313-2313
+	Animal Name: Falco sparverius
+		row 2314-2321
+
+
+Page Num:  58
+	Animal Name: Anas platyrhynchos
+		row 2322-2360
+	Animal Name: 
+		row 2361-2361
+
+
+Page Num:  59
+	Animal Name: Anas platyrhynchos
+		row 2362-2380
+	Animal Name: Lithobates catesbeianus
+		row 2381-2382
+	Animal Name: Lithobates catesbeianus (Bullfrog)
+		row 2383-2401
+
+
+Page Num:  60
+	Animal Name: Microtus californicus (California Vole)
+		row 2402-2412
+	Animal Name: Thamnophis sirtalis (Common Garter Snake)
+		row 2413-2418
+	Animal Name: Ambystoma macrodactylum (Long-toed Salamander)
+		row 2419-2424
+	Animal Name: Pseudacris regilla (Pacific Treefrog)
+		row 2425-2437
+	Animal Name: Rana aurora (Northern Red-legged Frog)
+		row 2438-2441
+
+
+Page Num:  61
+	Animal Name: Rana aurora (Northern Red-legged Frog)
+		row 2442-2452
+	Animal Name: Anaxyrus boreas (Western Toad)
+		row 2453-2481
+
+
+Page Num:  62
+	Animal Name: Anaxyrus boreas (Western Toad)
+		row 2482-2521
+
+
+Page Num:  63
+	Animal Name: Anaxyrus boreas (Western Toad)
+		row 2522-2524
+	Animal Name: Dipsosaurus dorsalis (Desert Iguana)
+		row 2525-2528
+	Animal Name: Gopherus agassizi (Desert Tortoise)
+		row 2529-2532
+	Animal Name: Pituophis melanoleucus (Pine Snake)
+		row 2533-2561
+
+
+Page Num:  64
+	Animal Name: Pituophis melanoleucus (Pine Snake)
+		row 2562-2580
+	Animal Name: Sceloporus occidentalis (Western Fence Lizard)
+		row 2581-2601
+
+
+Page Num:  65
+	Animal Name: Sceloporus occidentalis (Western Fence Lizard)
+		row 2602-2641
+
+
+Page Num:  66
+	Animal Name: Sceloporus occidentalis (Western Fence Lizard)
+		row 2642-2681
+
+
+Page Num:  67
+	Animal Name: Sceloporus occidentalis (Western Fence Lizard)
+		row 2682-2682
+	Animal Name: Actinemys marmorata (Western Pond Turtle)
+		row 2683-2689
+	Animal Name: Falco sparverius (American Kestrel)
+		row 2690-2721
+
+
+Page Num:  68
+	Animal Name: Falco sparverius (American Kestrel)
+		row 2722-2761
+
+
+Page Num:  69
+	Animal Name: Falco sparverius (American Kestrel)
+		row 2762-2801
+
+
+Page Num:  70
+	Animal Name: Falco sparverius (American Kestrel)
+		row 2802-2841
+
+
+Page Num:  71
+	Animal Name: Falco sparverius (American Kestrel)
+		row 2842-2881
+
+
+Page Num:  72
+	Animal Name: Falco sparverius (American Kestrel)
+		row 2882-2921
+
+
+Page Num:  73
+	Animal Name: Falco sparverius (American Kestrel)
+		row 2922-2961
+
+
+Page Num:  74
+	Animal Name: Falco sparverius (American Kestrel)
+		row 2962-3001
+
+
+Page Num:  75
+	Animal Name: Falco sparverius (American Kestrel)
+		row 3002-3039
+	Animal Name: Pelecanus occidentalis (Brown Pelican)
+		row 3040-3041
+
+
+Page Num:  76
+	Animal Name: Pelecanus occidentalis (Brown Pelican)
+		row 3042-3080
+	Animal Name: Falco sparverius (American Kestrel)
+		row 3081-3081
+
+
+Page Num:  77
+	Animal Name: Pelecanus occidentalis (Brown Pelican)
+		row 3082-3102
+	Animal Name: Athene cunicularia (Burrowing Owl)
+		row 3103-3121
+
+
+Page Num:  78
+	Animal Name: Athene cunicularia (Burrowing Owl)
+		row 3122-3126
+	Animal Name: Rallus longirostris (Clapper Rail)
+		row 3127-3150
+	Animal Name: Vireo bellii (Bell's Vireo)
+		row 3151-3156
+	Animal Name: Falco peregrinus (Peregrine Falcon)
+		row 3157-3158
+	Animal Name: Phalacrocorax auritus (Double-crested Cormorant)
+		row 3159-3161
+
+
+Page Num:  79
+	Animal Name: Phalacrocorax auritus (Double-crested Cormorant)
+		row 3162-3199
+	Animal Name: Pelecanus occidentalis (Brown Pelican)
+		row 3200-3201
+
+
+Page Num:  80
+	Animal Name: Phalacrocorax auritus (Double-crested Cormorant)
+		row 3202-3241
+
+
+Page Num:  81
+	Animal Name: Phalacrocorax auritus (Double-crested Cormorant)
+		row 3242-3281
+
+
+Page Num:  82
+	Animal Name: Phalacrocorax auritus (Double-crested Cormorant)
+		row 3282-3321
+
+
+Page Num:  83
+	Animal Name: Phalacrocorax auritus (Double-crested Cormorant)
+		row 3322-3348
+	Animal Name: Bubo virginianus (Great Horned Owl)
+		row 3349-3354
+	Animal Name: Charadrius vociferus (Killdeer)
+		row 3355-3356
+	Animal Name: Sterna antillarum (Least Tern)
+		row 3357-3361
+
+
+Page Num:  84
+	Animal Name: Sterna antillarum (Least Tern)
+		row 3362-3382
+	Animal Name: Colaptes auratus (Northern Flicker)
+		row 3383-3383
+	Animal Name: Falco peregrinus (Peregrine Falcon)
+		row 3384-3401
+
+
+Page Num:  85
+	Animal Name: Falco peregrinus (Peregrine Falcon)
+		row 3402-3441
+
+
+Page Num:  86
+	Animal Name: Falco peregrinus (Peregrine Falcon)
+		row 3442-3481
+
+
+Page Num:  87
+	Animal Name: Falco peregrinus (Peregrine Falcon)
+		row 3482-3498
+	Animal Name: Charadrius nivosus (Snowy Plover)
+		row 3499-3505
+	Animal Name: Melospiza melodia (Song Sparrow)
+		row 3506-3510
+	Animal Name: Aechmophorus occidentalis (Western Grebe)
+		row 3511-3521
+
+
+Page Num:  88
+	Animal Name: Aechmophorus occidentalis (Western Grebe)
+		row 3522-3525
+	Animal Name: Sturnella neglecta (Western Meadowlark)
+		row 3526-3527
+	Animal Name: Empidonax traillii (Willow Flycatcher)
+		row 3528-3547
+	Animal Name: Spermophilus beecheyi (California Ground Squirrel)
+		row 3548-3561
+
+
+Page Num:  89
+	Animal Name: Spermophilus beecheyi (California Ground Squirrel)
+		row 3562-3563
+	Animal Name: Zalophus californianus (California Sea Lion)
+		row 3564-3601
+
+
+Page Num:  90
+	Animal Name: Zalophus californianus (California Sea Lion)
+		row 3602-3641
+
+
+Page Num:  91
+	Animal Name: Zalophus californianus (California Sea Lion)
+		row 3642-3659
+	Animal Name: Canis latrans (Coyote)
+		row 3660-3668
+	Animal Name: Peromyscus maniculatus (Deer Mouse)
+		row 3669-3681
+
+
+Page Num:  92
+	Animal Name: Peromyscus maniculatus (Deer Mouse)
+		row 3682-3701
+	Animal Name: Enhydra lutris (Sea Otter)
+		row 3702-3721
+
+
+Page Num:  93
+	Animal Name: Enhydra lutris (Sea Otter)
+		row 3722-3761
+
+
+Page Num:  94
+	Animal Name: Enhydra lutris (Sea Otter)
+		row 3762-3801
+
+
+Page Num:  95
+	Animal Name: Enhydra lutris (Sea Otter)
+		row 3802-3827
+	Animal Name: Laterallus jamaicensis (California Black Rail)
+		row 3828-3828
+	Animal Name: Laterallus jamaicensis
+		row 3829-3830
+	Animal Name: Chelonia mydas
+		row 3831-3841
+
+
+Page Num:  96
+	Animal Name: Chelonia mydas
+		row 3842-3881
+
+
+Page Num:  97
+	Animal Name: Chelonia mydas
+		row 3882-3921
+
+
+Page Num:  98
+	Animal Name: Chelonia mydas
+		row 3922-3961
+
+
+Page Num:  99
+	Animal Name: Chelonia mydas
+		row 3962-4001
+
+
+Page Num:  100
+	Animal Name: Chelonia mydas
+		row 4002-4041
+
+
+Page Num:  101
+	Animal Name: Chelonia mydas
+		row 4042-4081
+
+
+Page Num:  102
+	Animal Name: Chelonia mydas
+		row 4082-4121
+
+
+Page Num:  103
+	Animal Name: Chelonia mydas
+		row 4122-4135
+	Animal Name: Egretta thula
+		row 4136-4161
+
+
+Page Num:  104
+	Animal Name: Egretta thula
+		row 4162-4201
+
+
+Page Num:  105
+	Animal Name: Egretta thula
+		row 4202-4241
+
+
+Page Num:  106
+	Animal Name: Egretta thula
+		row 4242-4245
