@@ -1,0 +1,11 @@
+,species,class,order,family,genus
+0,Sceloporus occidentalis,Lepidosauria,Squamata,Phrynosomatidae,Sceloporus
+1,Falco sparverius,Aves,Falconiformes,Falconidae,Falco
+2,Phalacrocorax auritus,Aves,Suliformes,Phalacrocoracidae,Phalacrocorax
+3,Falco peregrinus,Aves,Falconiformes,Falconidae,Falco
+4,Zalophus californianus,Mammalia,Carnivora,Otariidae,Zalophus
+5,Enhydra lutris,Mammalia,Carnivora,Mustelidae,Enhydra
+6,Turdus migratorius,Aves,Passeriformes,Turdidae,Turdus
+7,Anas platyrhynchos,Aves,Anseriformes,Anatidae,Anas
+8,Chelonia mydas,,Testudines,Cheloniidae,Chelonia
+9,Egretta thula,Aves,Pelecaniformes,Ardeidae,Egretta
