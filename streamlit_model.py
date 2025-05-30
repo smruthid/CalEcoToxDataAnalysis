@@ -5,6 +5,9 @@ import numpy as np
 import joblib
 import pickle
 
+import sys
+
+
 
 def load_saved_models(model_dir='saved_models'):
     """Load all saved models and return them as a dictionary"""
@@ -129,28 +132,11 @@ def prepare_input_data(user_inputs, feature_columns):
     return data
 
 def main():
-        # Debug: Check what files exist
-    st.write("**Debug - Current directory:**", os.getcwd())
-    st.write("**Debug - Files in current directory:**", os.listdir('.'))
-    
-    if os.path.exists('saved_models'):
-        st.write("✅ **saved_models directory exists!**")
-        st.write("**Files in saved_models:**", os.listdir('saved_models'))
+    models, error = load_trained_models()
+    if error:
+        st.error(f"Model loading error: {error}")
     else:
-        st.error("❌ **saved_models directory NOT found**")
-        st.write("**Available directories:**", [d for d in os.listdir('.') if os.path.isdir(d)])
-    
-    # Check if we can load models
-    try:
-        models, error = load_trained_models()
-        if error:
-            st.error(f"Model loading error: {error}")
-        else:
-            st.success("✅ Models loaded successfully!")
-    except Exception as e:
-        st.error(f"Exception loading models: {e}")
-        import traceback
-        st.text(traceback.format_exc())
+        st.success("✅ Models loaded successfully!")
 
     #Get Chemical Data
     chem_data = pd.read_csv('Data/ChemicalData.csv')
