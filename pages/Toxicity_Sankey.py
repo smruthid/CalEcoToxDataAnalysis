@@ -51,6 +51,10 @@ data['Animal Name'] = data['Animal Name'].apply(lambda x: x + f' ({name_dict[x]}
 name_unique = data['Animal Name'].unique()
 event = st.dataframe(
     name_unique,
+    column_config={
+        'index': 'Selection',
+        'value': 'Scientific Name (Common Name)'
+    },
     on_select="rerun",
     selection_mode="single-row"
 )
