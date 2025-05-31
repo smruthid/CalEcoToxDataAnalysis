@@ -2,12 +2,12 @@ import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
 
-st.title("Sankey Example")
+st.title("Toxicity Sankey")
 st.write(
-    "testing~"
+    "For each species, show common exposure methods associated with chemicals"
 )
 
-data = pd.read_csv('toxicity_data.csv')
+data = pd.read_csv('DataCleaning/toxicity_data.csv')
 name_unique = data['Animal Name'].unique()
 event = st.dataframe(
     name_unique,
