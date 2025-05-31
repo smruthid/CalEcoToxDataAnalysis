@@ -2,10 +2,8 @@ import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
 
-st.title("Sankey Example")
-
 # Start of Pie chart
-st.header("🧬 Interactive Drilldown Pie Chart")
+st.header("☣️ Interactive Drilldown Pie Chart")
 
 # Load dataset
 df = pd.read_csv("Data/calecotox_toxicity_data.csv")
