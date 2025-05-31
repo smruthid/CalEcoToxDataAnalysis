@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 import os
 
 
-df = pd.read_csv('toxicity_data.csv')
+df = pd.read_csv('../Data/calecotox_toxicity_data.csv')
 
 split_data = df['Animal Name'].str.split('(', expand=True)
 

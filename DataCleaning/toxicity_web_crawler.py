@@ -7,7 +7,7 @@ def get_td_text(row, class_name):
     td = row.find('td', class_=class_name)
     return td.text.strip() if td else ""
 
-csv_filename = "toxicity_data.csv"
+csv_filename = "../Data/calecotox_toxicity_data.csv"
 num_rows = 1
 with open(csv_filename, mode="w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
