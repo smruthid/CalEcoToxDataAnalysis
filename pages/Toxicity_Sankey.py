@@ -8,12 +8,306 @@ st.write(
 )
 
 data = pd.read_csv('Data/calecotox_toxicity_data.csv')
+
+#### CLEAN ANIMAL NAMES
+# drop rows where Animal Name is nan
+data = data.dropna(subset='Animal Name', axis=0)
+
+# show pre-cleaning animal species
+#species_count = data.groupby('Animal Name').count()[0].sort_values()
+#print
+
+name_list = data['Animal Name'].astype(str).sort_values().unique()
+name_map = []
+
+## because it's nicely sorted, can just match entries with the next one
+for i in range(len(name_list)-1):
+    if name_list[i] in name_list[i+1] and 'ssp.' not in name_list[i+1]:
+        name_map.append({name_list[i] : name_list[i+1]})
+        i += 1
+
+for name in name_map:
+    data['Animal Name'] = data['Animal Name'].apply(lambda x: name[x] if x in name else x)
+
+
+# map animal names to their common name
+name_dict = {}
+name_dict['Anas platyrhynchos'] = 'Mallard Duck'
+name_dict['Zenaida macroura'] = 'Mourning Dove'
+name_dict['Vulpes macrotis ssp. arsipus'] = 'Desert Kit Fox'
+name_dict['Dipodomys merriami'] = 'Merriam\'s Kangaroo Rat'
+name_dict['Taricha torosa'] = 'California Newt'
+name_dict['Pelecanus occidentalis ssp. californicus'] = 'California Brown Pelican'
+name_dict['Rallus longirostris ssp. obsoletus'] = 'California Clapper Rail'
+name_dict['Pituophis catenifer'] = 'Gopher Snake'
+name_dict['Melospiza melodia ssp. pusillula'] = 'Song Sparrow'
+name_dict['Dicamptodon tenebrosus'] = 'Coastal Giant Salamander'
+name_dict['Enhydra lutris ssp. nereis'] = 'California Sea Otter'
+name_dict['Chelonia mydas'] = 'Green Sea Turtle'
+name_dict['Egretta thula'] = 'Snowy Egret'
+
+data['Animal Name'] = data['Animal Name'].apply(lambda x: x + f' ({name_dict[x]})' if x in name_dict else x)
+
 name_unique = data['Animal Name'].unique()
 event = st.dataframe(
     name_unique,
     on_select="rerun",
     selection_mode="single-row"
 )
+
+#### CLEAN EXPOSURE TECHNIQUES
+# drop rows where Tox Exposure Technique is nan
+data = data.dropna(subset='Tox Exposure Technique', axis=0)
+
+# show pre-cleaning categories
+exposure_count = data.groupby('Tox Exposure Technique').count()['Animal Name'].sort_values()
+#print(len(exposure_count))
+
+exp_cat_list = []
+
+env_contam = {}
+env_contam['label'] = 'Environmental contamination'
+env_contam['map'] = [
+    'environmental', 
+    'environmental contamination',
+    'environmental contaimination', 
+    'environmental contamination leads to altered porphyrinogen levels',
+    'environmental exposure', 
+    'site contamination',
+    'habitat contamination',
+    'envrionmental contamination',
+    'contaminated substrate',
+    'site contamination (primary uptake via ingestion)',
+    'contaminated sediment ingestion',
+]
+exp_cat_list.append(env_contam)
+
+
+diet = {}
+diet['label'] = 'Diet' 
+diet['map'] = [
+    'diet (parent)',
+    'diet (parental)',
+    'diet (via site contamination)',
+    'dietary',
+    'environmental contamination; diet',
+    'diet',
+    'dietary via parent regurgitation & self-feeding',
+    'ingestion',
+    'diet (secondary exposure)',
+    'parent diet',
+    'parent',
+    'ingested fishing weight',
+    'ingested fishing weights',
+    'consumed mammal bait',
+    'parental diet',
+]
+exp_cat_list.append(diet)
+
+gavage = {}
+gavage['label'] = 'Gavage'
+gavage['map'] = [
+    'oral intubation',
+    'intubation',
+    'gavage',
+    'oral gavage',
+    'oral intubation (2 #four shot)\ningestion (field exposure)',
+    'oral intubation (lab exposure)\ningestion (field exposure)'
+]
+exp_cat_list.append(gavage)
+
+waterborne = {}
+waterborne['label'] = 'Waterborne'
+waterborne['map'] = [
+    'waterborne',
+    'drinking water',
+    'parental drinking water',
+    'in bathing water',
+    'water-borne; flow-through'
+]
+exp_cat_list.append(waterborne)
+
+ovo = {}
+ovo['label'] =  'In ovo'
+ovo['map'] = [
+    'in ovo',
+    'in ovo via maternal transfer',
+    'in ovo via maternal transfer from previous year exposure',
+    'parental diet (in ovo)',
+    'in ovo & via parental exposure',
+    'maternal diet',
+    'parental transfer',
+]
+exp_cat_list.append(ovo)
+
+injection = {}
+injection['label'] = 'Injection'
+injection['map'] = [
+    'im injection',
+    'im injection followed by iv 1 m later',
+    'im injection followed by iv 2 w later',
+    'intramuscular injection',
+    'intraperitoneal injection',
+    'intraperitoneal',
+    'subcutaneous injection',
+    'injection',
+    'subcutaneous injection following sedation, surgery, recovery',
+    'intracoelmic injection',
+    'intramuscular',
+    '2 doses: 0.5 mg/kg each via jugular and medial metatarsal veins',
+    'intravenous',
+]
+exp_cat_list.append(injection)
+
+ovo_exp = {}
+ovo_exp['label'] = 'In ovo; experimental'
+ovo_exp['map'] = [
+    'egg yolk injection',
+    'in ovo injection',
+    'egg immersion',
+    'application to egg surface',
+    'egg injection',
+    'application to shell surface',
+    'application to eggshell surface',
+    'topical on eggshell',
+    'egg immersion in solution',
+    'egg surface',
+    'in ovo, immersion',
+    'incubation day 19: egg injection; days 1-29 posthatch: oral gavage',
+    'in ovo; oral gavage',
+    'in ovo, external application',
+    'eggshell surface application',
+]
+exp_cat_list.append(ovo_exp)
+
+oral = {}
+oral['label'] = 'Oral'
+oral['map'] = [
+    'oral',
+    'oral (parent)'
+]
+exp_cat_list.append(oral)
+
+oral_exp = {}
+oral_exp['label'] = 'Oral; experimental'
+oral_exp['map'] = [
+    'oral via coated artichoke bracts',
+    'oral capsule',
+    'oral capsules; divided doses',
+    'oral (capsule)',
+    'oral via food pellets',
+    'oral via capsule',
+]
+exp_cat_list.append(oral_exp)
+
+field_app = {}
+field_app['label'] = 'Field application'
+field_app['map'] = [
+    'field application',
+    'treatment of nest-containing trees',
+    'spiked nest material',
+    'spray',
+    'field-applied',
+    'pesticide application (late fall)',
+    'application to habitat',
+    'pesticide application',
+    'pesticide application; subjects walked 50, 150, or 300 m through application areas',
+    'ambient overspray',
+    'spray application to habitat'
+]
+exp_cat_list.append(field_app)
+
+top_app = {}
+top_app['label'] = 'Topical application'
+top_app['map'] = {
+    'topical to eye',
+    'topical application',
+    'dorsal application',
+    'experimental application'
+}
+exp_cat_list.append(top_app)
+
+other = {}
+other['label'] = 'Other'
+other['map'] = {
+    'route',
+    'computer model',
+    'embedded projectile',
+    'modeled data',
+    'embedded in muscle'
+}
+exp_cat_list.append(other)
+
+nr = {}
+nr['label'] = 'Not recorded'
+nr['map'] = {
+    'NR',
+}
+exp_cat_list.append(nr)
+
+mult = {}
+mult['label'] = 'Multiple'
+mult['map'] = {
+    'multiple',
+}
+exp_cat_list.append(mult)
+
+exp_clean_list = []
+
+env_contam = {}
+env_contam['label'] = 'Environmental contamination'
+env_contam['map'] = [
+    'environmental', 
+    'environmental contamination',
+    'environmental contaimination', 
+    'envrionmental contamination',
+]
+exp_clean_list.append(env_contam)
+
+diet = {}
+diet['label'] = 'Diet (parental)' 
+diet['map'] = [
+    'diet (parent)',
+    'diet (parental)',
+    'environmental contamination; diet',
+    'dietary via parent regurgitation & self-feeding',
+    'parent diet',
+    'parent',
+    'parental diet',
+]
+exp_clean_list.append(diet)
+
+im_injection = {}
+im_injection['label'] = 'Intramuscular Injection'
+im_injection['map'] = [
+    'im injection',
+    'intramuscular injection',
+    'intramuscular',
+]
+exp_clean_list.append(im_injection)
+
+ovo_sur = {}
+ovo_sur['label'] = 'Application to egg surface'
+ovo_sur['map'] = [
+    'application to egg surface',
+    'application to shell surface',
+    'application to eggshell surface',
+    'topical on eggshell',
+    'egg surface',
+    'in ovo, external application',
+    'eggshell surface application',
+]
+exp_clean_list.append(ovo_sur)
+
+
+data['Tox Exposure Category'] = data['Tox Exposure Technique']
+for exposure in exp_cat_list:
+    data['Tox Exposure Category'] = \
+        data['Tox Exposure Category'].astype(str).apply(lambda x: exposure['label'] if x.strip().lower() in exposure['map'] else x)
+
+for exposure in exp_clean_list:
+    data['Tox Exposure Technique'] = \
+        data['Tox Exposure Technique'].astype(str).apply(lambda x: exposure['label'] if x.strip().lower() in exposure['map'] else x[:1].upper() + x[1:])
 
 # allow user to drill down like
 # select animal -> view sankey diagram of toxins -> exposure method
@@ -23,7 +317,7 @@ if len(event.selection.rows) > 0:
     st.header(f'{animal_name}')
 
     animal_entries = data[data['Animal Name'] == animal_name]
-    chemicals = animal_entries.groupby(['Chemical', 'Tox Exposure Technique']).count().reset_index()
+    chemicals = animal_entries.groupby(['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique']).count().reset_index()
 
     top10 = animal_entries.groupby(['Chemical']).count() \
                 .sort_values('Animal Name', ascending=False)[:10]
@@ -32,21 +326,27 @@ if len(event.selection.rows) > 0:
     chemicals = chemicals[chemicals['Chemical'].isin(top10)]
 
     toxins = list(chemicals['Chemical'].unique())
+    categories = list(chemicals['Tox Exposure Category'].unique())
     exposures = list(chemicals['Tox Exposure Technique'].unique())
 
     #toxins
     #exposures
 
-    # each entry is a dict w/three entries: source, exposure, value
+    # each entry is a dict w/three entries: souce, target, value
     # source: toxin index, exposure: exposures index, value: # of counts
-    links = chemicals[['Chemical', 'Tox Exposure Technique', 'Animal Name']].to_dict('records')
+    cat_links = chemicals[['Chemical', 'Tox Exposure Category', 'Animal Name']].to_dict('records')
+    exp_links = chemicals[['Tox Exposure Category', 'Tox Exposure Technique', 'Animal Name']].to_dict('records')
 
-    colors = ['cyan']*len(toxins) + ['green']*len(exposures)
+    colors = ['cyan']*len(toxins) + ['yellow']*len(categories) + ['green']*len(exposures)
 
-    labels = list(toxins) + list(exposures)
-    source = [toxins.index(link['Chemical']) for link in links]
-    target = [len(toxins) + exposures.index(link['Tox Exposure Technique']) for link in links]
-    value = [link['Animal Name'] for link in links]
+    labels = list(toxins) + list(categories) +  list(exposures)
+    source = [toxins.index(link['Chemical']) for link in cat_links]
+    source = source + [len(toxins) + categories.index(link['Tox Exposure Category']) for link in exp_links]
+    target = [len(toxins) + categories.index(link['Tox Exposure Category']) for link in cat_links]
+    target = target + [len(toxins) + len(categories) + exposures.index(link['Tox Exposure Technique']) for link in exp_links]
+
+    value = [link['Animal Name'] for link in cat_links]
+    value = value + [link['Animal Name'] for link in exp_links]
 
     fig = go.Figure(data=[go.Sankey(
         arrangement = 'perpendicular',
@@ -65,7 +365,3 @@ if len(event.selection.rows) > 0:
 
     fig.update_layout(title_text='Toxin Sankey', font_size=10)
     st.plotly_chart(fig)
-
-
-
-
