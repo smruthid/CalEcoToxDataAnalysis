@@ -7,7 +7,7 @@ st.write(
     "For each species, show common exposure methods associated with chemicals"
 )
 
-data = pd.read_csv('DataCleaning/toxicity_data.csv')
+data = pd.read_csv('Data/calecotox_toxicity_data.csv')
 name_unique = data['Animal Name'].unique()
 event = st.dataframe(
     name_unique,

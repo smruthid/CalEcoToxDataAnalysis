@@ -8,7 +8,7 @@ st.title("Sankey Example")
 st.header("🧬 Interactive Drilldown Pie Chart")
 
 # Load dataset
-df = pd.read_csv("DataCleaning/toxicity_data.csv")
+df = pd.read_csv("Data/calecotox_toxicity_data.csv")
 
 # Clean missing values
 df = df.dropna(subset=["Toxicity Endpoint Type", "Chemical", "Life Cycle Stage"])
