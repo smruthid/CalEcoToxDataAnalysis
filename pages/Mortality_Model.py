@@ -4,6 +4,8 @@ import os
 import numpy as np
 import joblib
 import pickle
+import shap
+import matplotlib.pyplot as plt
 
 import sys
 
@@ -61,6 +63,15 @@ def predict_with_loaded_models(models, input_data):
         'endpoint_units': units,
         'endpoint_value_from_log': np.exp(log_value)
     }
+
+def get_shap_values(models, input):
+    model = models['endpoint_val']
+    feature_columns = models['metadata']['feature_columns']['model2']
+    X = input[feature_columns]
+    base_estimator = model.estimators_[0]  # For first output (log value)
+    explainer = shap.TreeExplainer(base_estimator)
+    shap_values = explainer(X)
+    return explainer, shap_values
 
 
 # Set page config
@@ -215,7 +226,13 @@ def main():
             
         # Make prediction
         predictions = predict_with_loaded_models(models, input_data)
-        st.write(predictions)
+        explainer,shap_values = get_shap_values(models, input_data)
+        feature_names_list = models['metadata']['feature_columns']['model2']
+
+        st.subheader("📊 Waterfall Plot")
+        fig1, ax1 = plt.subplots(figsize=(10, 6))
+        shap.plots.waterfall(shap_values[0], show=False)  # shap_values is already an Explanation object
+        st.pyplot(fig1)
 
 
 if __name__ == "__main__":
