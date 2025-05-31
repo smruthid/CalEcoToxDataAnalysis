@@ -229,6 +229,8 @@ def main():
         explainer,shap_values = get_shap_values(models, input_data)
         feature_names_list = models['metadata']['feature_columns']['model2']
 
+        st.write(predictions)
+
         st.subheader("📊 Waterfall Plot")
         fig1, ax1 = plt.subplots(figsize=(10, 6))
         shap.plots.waterfall(shap_values[0], show=False)  # shap_values is already an Explanation object
