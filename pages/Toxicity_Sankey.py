@@ -2,12 +2,14 @@ import pandas as pd
 import streamlit as st
 import plotly.graph_objects as go
 
-st.title("Toxicity Sankey")
+st.title("Sankey Example")
 st.write(
-    "For each species, show common exposure methods associated with chemicals"
+    "For each species, show common exposure methods associated with chemical"
 )
 
+## clean data
 data = pd.read_csv('Data/calecotox_toxicity_data.csv')
+
 
 #### CLEAN ANIMAL NAMES
 # drop rows where Animal Name is nan
@@ -48,16 +50,28 @@ name_dict['Egretta thula'] = 'Snowy Egret'
 
 data['Animal Name'] = data['Animal Name'].apply(lambda x: x + f' ({name_dict[x]})' if x in name_dict else x)
 
-name_unique = data['Animal Name'].unique()
-event = st.dataframe(
-    name_unique,
-    column_config={
-        'index': 'Selection',
-        'value': 'Scientific Name (Common Name)'
-    },
-    on_select="rerun",
-    selection_mode="single-row"
-)
+# drop rows where Tox Exposure Technique is nan
+data = data.dropna(subset='Tox Exposure Technique', axis=0)
+
+#### CLEAN ANIMAL NAMES
+# drop rows where Animal Name is nan
+data = data.dropna(subset='Animal Name', axis=0)
+
+# show pre-cleaning animal species
+#species_count = data.groupby('Animal Name').count()[0].sort_values()
+#print
+
+name_list = data['Animal Name'].astype(str).sort_values().unique()
+name_map = []
+
+## because it's nicely sorted, can just match entries with the next one
+for i in range(len(name_list)-1):
+    if name_list[i] in name_list[i+1] and 'ssp.' not in name_list[i+1]:
+        name_map.append({name_list[i] : name_list[i+1]})
+        i += 1
+
+for name in name_map:
+    data['Animal Name'] = data['Animal Name'].apply(lambda x: name[x] if x in name else x)
 
 #### CLEAN EXPOSURE TECHNIQUES
 # drop rows where Tox Exposure Technique is nan
@@ -245,7 +259,7 @@ exp_cat_list.append(other)
 nr = {}
 nr['label'] = 'Not recorded'
 nr['map'] = {
-    'NR',
+    'nr',
 }
 exp_cat_list.append(nr)
 
@@ -303,6 +317,13 @@ ovo_sur['map'] = [
 ]
 exp_clean_list.append(ovo_sur)
 
+nr = {}
+nr['label'] = 'Not recorded'
+nr['map'] = {
+    'nr',
+}
+exp_clean_list.append(nr)
+
 
 data['Tox Exposure Category'] = data['Tox Exposure Technique']
 for exposure in exp_cat_list:
@@ -313,8 +334,16 @@ for exposure in exp_clean_list:
     data['Tox Exposure Technique'] = \
         data['Tox Exposure Technique'].astype(str).apply(lambda x: exposure['label'] if x.strip().lower() in exposure['map'] else x[:1].upper() + x[1:])
 
+name_unique = data['Animal Name'].unique()
+event = st.dataframe(
+    name_unique,
+    on_select="rerun",
+    selection_mode="single-row"
+)
+
 # allow user to drill down like
 # select animal -> view sankey diagram of toxins -> exposure method
+chemicals = None
 
 if len(event.selection.rows) > 0:
     animal_name = name_unique[event.selection.rows].item()
@@ -327,7 +356,7 @@ if len(event.selection.rows) > 0:
                 .sort_values('Animal Name', ascending=False)[:10]
 
     top10 = list(top10.index)
-    chemicals = chemicals[chemicals['Chemical'].isin(top10)]
+    chemicals = chemicals[chemicals['Chemical'].isin(top10)].sort_values(by=['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique'])
 
     toxins = list(chemicals['Chemical'].unique())
     categories = list(chemicals['Tox Exposure Category'].unique())
@@ -341,7 +370,7 @@ if len(event.selection.rows) > 0:
     cat_links = chemicals[['Chemical', 'Tox Exposure Category', 'Animal Name']].to_dict('records')
     exp_links = chemicals[['Tox Exposure Category', 'Tox Exposure Technique', 'Animal Name']].to_dict('records')
 
-    colors = ['cyan']*len(toxins) + ['yellow']*len(categories) + ['green']*len(exposures)
+    colors = ['salmon']*len(toxins) + ['green']*len(categories) + ['seagreen']*len(exposures)
 
     labels = list(toxins) + list(categories) +  list(exposures)
     source = [toxins.index(link['Chemical']) for link in cat_links]
@@ -367,5 +396,59 @@ if len(event.selection.rows) > 0:
             value = value
         ))])
 
-    fig.update_layout(title_text='Toxin Sankey', font_size=10)
+    #fig.update_layout(title_text='Toxin Sankey', font_size=10)
+    st.plotly_chart(fig)
+
+else:
+    st.header(f'Animals vs. Chemicals vs. Exposure')
+
+    chemicals = data.groupby(['Animal Name', 'Chemical', 'Tox Exposure Category']).count().reset_index()
+    top10 = data.groupby(['Animal Name']).count() \
+                .sort_values('Tox Exposure Technique', ascending=False)[:10]
+    top10 = list(top10.index)
+
+    chemicals = chemicals[chemicals['Animal Name'].isin(top10)].sort_values(by=['Animal Name', 'Chemical', 'Tox Exposure Category'])
+
+    top10 = chemicals.groupby(['Chemical']).count() \
+                .sort_values('Tox Exposure Technique', ascending=False)[:10]
+    top10 = list(top10.index)
+    chemicals = chemicals[chemicals['Chemical'].isin(top10)].sort_values(by=['Animal Name', 'Chemical', 'Tox Exposure Category'])
+    #st.write(chemicals)
+
+    animals = list(chemicals['Animal Name'].unique())
+    toxins = list(chemicals['Chemical'].unique())
+    categories = list(chemicals['Tox Exposure Category'].unique())
+
+    # each entry is a dict w/three entries: souce, target, value
+    # source: toxin index, exposure: exposures index, value: # of counts
+    tox_links = chemicals[['Animal Name', 'Chemical', 'Tox Exposure Technique']].to_dict('records')
+    cat_links = chemicals[['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique' ]].to_dict('records')
+
+    colors = ['cyan']*len(animals) + ['salmon']*len(toxins) + ['green']*len(categories)
+
+    labels = list(animals) + list(toxins) +  list(categories)
+    source = [animals.index(link['Animal Name']) for link in tox_links]
+    source = source + [len(animals) + toxins.index(link['Chemical']) for link in cat_links]
+    target = [len(animals) + toxins.index(link['Chemical']) for link in tox_links]
+    target = target + [len(animals) + len(toxins) + categories.index(link['Tox Exposure Category']) for link in cat_links]
+
+    value = [link['Tox Exposure Technique'] for link in tox_links]
+    value = value + [link['Tox Exposure Technique'] for link in cat_links]
+
+    fig = go.Figure(data=[go.Sankey(
+        arrangement = 'perpendicular',
+        node = dict(
+            pad = 5,
+            thickness = 20,
+            line = dict(color = 'black', width=0.5),
+            label = labels,
+            color = colors
+        ),
+        link = dict(
+            source = source,
+            target = target,
+            value = value
+        ))])
+
+    #fig.update_layout(title_text='Toxin Sankey', font_size=10)
     st.plotly_chart(fig)
