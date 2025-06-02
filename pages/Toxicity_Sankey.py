@@ -517,9 +517,6 @@ if sel_animals is not None:
                 value = value,
                 hovercolor = 'rgba(255, 215, 0, 0.5)',
             ))],
-            layout=go.Layout(
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)'
             ))
 
         st.plotly_chart(fig)
@@ -635,5 +632,4 @@ r'    text-shadow: rgb(68, 68, 68) 1px 1px 1px, rgb(68, 68, 68) -1px -1px 1px, r
 r'    white-space: pre;'
 r'}'
 )
-print(css)
 st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
