@@ -517,7 +517,7 @@ if sel_animals is not None:
                 value = value,
                 hovercolor = 'rgba(255, 215, 0, 0.5)',
             ))],
-            ))
+            )
 
         st.plotly_chart(fig)
         
