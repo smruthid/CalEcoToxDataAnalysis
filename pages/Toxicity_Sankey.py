@@ -323,12 +323,12 @@ for exposure in exp_clean_list:
 ############################################
 
 
+sel_value = st.session_state.get("sel_mode", False)
 sel_label = (
     "Multiple Selection"
-    if st.session_state.get("sel_mode", False)
+    if sel_value
     else "Single Selection"
 )
-sel_value = st.session_state.get("sel_mode", False)
 st.toggle(sel_label, value=sel_value, key='sel_mode')
 
 sel_mode = (
