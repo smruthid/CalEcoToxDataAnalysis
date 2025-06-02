@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 st.title("Toxicity Sankey")
 st.write(
-    "For each species, show common exposure methods associated with chemical"
+    "For each species, show the studies per chemical and exposure type."
 )
 
 ############################################
@@ -322,14 +322,31 @@ for exposure in exp_clean_list:
 ############################################
 ############################################
 
-name_unique = data['Animal Name'].unique()
+
+sel_label = (
+    "Multiple Selection"
+    if st.session_state.get("sel_mode", False)
+    else "Single Selection"
+)
+sel_value = st.session_state.get("sel_mode", False)
+st.toggle(sel_label, value=sel_value, key='sel_mode')
+
+sel_mode = (
+    'multi-row'
+    if sel_value
+    else 'single-row'
+)
+
+name_sel = data.groupby(['Animal Name']).count().reset_index()
 event = st.dataframe(
-    name_unique,
+    name_sel[['Animal Name', 'Tox Exposure']],
+    hide_index=True,
     column_config={
-        'value': 'Scientific Name (Common Name)'
+        'Animal Name': 'Scientific Name (Common Name)',
+        'Tox Exposure': 'Num Entries'
     },
     on_select="rerun",
-    selection_mode="single-row"
+    selection_mode=sel_mode
 )
 
 # allow user to drill down like
@@ -337,87 +354,174 @@ event = st.dataframe(
 chemicals = None
 
 if len(event.selection.rows) > 0:
-    st.session_state['sel_animal'] = name_unique[event.selection.rows].item()
+    sel_animals = []
+    for row in event.selection.rows:
+        sel_animals.append(name_sel.iloc[row]['Animal Name'])
+    st.session_state['sel_animal'] = sel_animals
 else:
     st.session_state['sel_animal'] = None
     
 @st.fragment
 def chart_fragment():
-    animal_name = st.session_state['sel_animal']
-    if animal_name is not None:
-        st.header(f'{animal_name}')
+    sel_animals = st.session_state['sel_animal']
+    if sel_animals is not None:
+        if len(sel_animals) == 1:
+            animal_name = sel_animals[0]
+            st.header(f'{animal_name}')
 
-        animal_entries = data[data['Animal Name'] == animal_name]
-        chemicals = animal_entries.groupby(['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique']).count().reset_index()
-        #chemicals = animal_entries.sort_values(by=['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique'])
+            animal_entries = data[data['Animal Name'] == animal_name]
+            chemicals = animal_entries.groupby(['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique']).count().reset_index()
+            #chemicals = animal_entries.sort_values(by=['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique'])
 
-        max_chem = len(animal_entries['Chemical'].unique())
+            max_chem = len(animal_entries['Chemical'].unique())
 
-        if max_chem > 1:
-            num_chem = st.slider('\# of Chemicals', value=min((10, max_chem)), min_value=1, max_value=max_chem)
-            topX = animal_entries.groupby(['Chemical']).count() \
-                        .sort_values('Animal Name', ascending=False)[:num_chem]
-            topX = list(topX.index)
-            chemicals = chemicals[chemicals['Chemical'].isin(topX)].sort_values(by=['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique'])
-            chemicals = chemicals[chemicals['Chemical'].isin(topX)].sort_values(by=['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique'])
+            if max_chem > 1:
+                num_chem = st.slider('\# of Chemicals', value=min((10, max_chem)), min_value=1, max_value=max_chem)
+                topX = animal_entries.groupby(['Chemical']).count() \
+                            .sort_values('Animal Name', ascending=False)[:num_chem]
+                topX = list(topX.index)
+                chemicals = chemicals[chemicals['Chemical'].isin(topX)].sort_values(by=['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique'])
 
-        toxins = list(chemicals['Chemical'].unique())
-        categories = list(chemicals['Tox Exposure Category'].unique())
-        exposures = list(chemicals['Tox Exposure Technique'].unique())
+            toxins = list(chemicals['Chemical'].unique())
+            categories = list(chemicals['Tox Exposure Category'].unique())
+            exposures = list(chemicals['Tox Exposure Technique'].unique())
 
-        #chem_dim = go.parcats.Dimension(
-        #    values = chemicals['Chemical'],
-        #    label = 'Chemical'
-        #)
+            #chem_dim = go.parcats.Dimension(
+            #    values = chemicals['Chemical'],
+            #    label = 'Chemical'
+            #)
 
-        #cat_dim = go.parcats.Dimension(
-        #    values = chemicals['Tox Exposure Category'],
-        #    label = 'Exposure Category'
-        #)
+            #cat_dim = go.parcats.Dimension(
+            #    values = chemicals['Tox Exposure Category'],
+            #    label = 'Exposure Category'
+            #)
 
-        #tox_dim = go.parcats.Dimension(
-        #    values = chemicals['Tox Exposure Technique'],
-        #    label = 'Exposure Technique'
-        #)
+            #tox_dim = go.parcats.Dimension(
+            #    values = chemicals['Tox Exposure Technique'],
+            #    label = 'Exposure Technique'
+            #)
 
-        # each entry is a dict w/three entries: souce, target, value
-        # source: toxin index, exposure: exposures index, value: # of counts
-        cat_links = chemicals[['Chemical', 'Tox Exposure Category', 'Animal Name']].to_dict('records')
-        exp_links = chemicals[['Tox Exposure Category', 'Tox Exposure Technique', 'Animal Name']].to_dict('records')
+            # each entry is a dict w/three entries: souce, target, value
+            # source: toxin index, exposure: exposures index, value: # of counts
+            cat_links = chemicals[['Chemical', 'Tox Exposure Category', 'Animal Name']].to_dict('records')
+            exp_links = chemicals[['Tox Exposure Category', 'Tox Exposure Technique', 'Animal Name']].to_dict('records')
 
-        colors = ['salmon']*len(toxins) + ['green']*len(categories) + ['seagreen']*len(exposures)
+            colors = ['salmon']*len(toxins) + ['green']*len(categories) + ['seagreen']*len(exposures)
 
-        #fig = go.Figure(data = [go.Parcats(
-        #    dimensions = [chem_dim, cat_dim, tox_dim],
-        #    hoverinfo = 'count',
-        #    line = {'shape': 'hspline'},
-        #    )])
+            #fig = go.Figure(data = [go.Parcats(
+            #    dimensions = [chem_dim, cat_dim, tox_dim],
+            #    hoverinfo = 'count',
+            #    line = {'shape': 'hspline'},
+            #    )])
 
-        labels = list(toxins) + list(categories) +  list(exposures)
-        source = [toxins.index(link['Chemical']) for link in cat_links]
-        source = source + [len(toxins) + categories.index(link['Tox Exposure Category']) for link in exp_links]
-        target = [len(toxins) + categories.index(link['Tox Exposure Category']) for link in cat_links]
-        target = target + [len(toxins) + len(categories) + exposures.index(link['Tox Exposure Technique']) for link in exp_links]
+            labels = list(toxins) + list(categories) +  list(exposures)
+            source = [toxins.index(link['Chemical']) for link in cat_links]
+            source = source + [len(toxins) + categories.index(link['Tox Exposure Category']) for link in exp_links]
+            target = [len(toxins) + categories.index(link['Tox Exposure Category']) for link in cat_links]
+            target = target + [len(toxins) + len(categories) + exposures.index(link['Tox Exposure Technique']) for link in exp_links]
 
-        value = [link['Animal Name'] for link in cat_links]
-        value = value + [link['Animal Name'] for link in exp_links]
+            value = [link['Animal Name'] for link in cat_links]
+            value = value + [link['Animal Name'] for link in exp_links]
 
-        fig = go.Figure(data=[go.Sankey(
-            node = dict(
-                pad = 5,
-                thickness = 20,
-                line = dict(color = 'black', width=0.5),
-                label = labels,
-                color = colors
-            ),
-            link = dict(
-                source = source,
-                target = target,
-                value = value,
-                hovercolor = 'rgba(255, 215, 0, 0.5)',
-            ))])
+            fig = go.Figure(data=[go.Sankey(
+                node = dict(
+                    pad = 5,
+                    thickness = 20,
+                    line = dict(color = 'black', width=0.5),
+                    label = labels,
+                    color = colors
+                ),
+                link = dict(
+                    source = source,
+                    target = target,
+                    value = value,
+                    hovercolor = 'rgba(255, 215, 0, 0.5)',
+                ))])
 
-        st.plotly_chart(fig)
+            st.plotly_chart(fig)
+        else:
+            for animal in sel_animals:
+                st.header(f'{animal}')
+
+            chemicals = data.groupby(['Animal Name', 'Chemical', 'Tox Exposure Category']).count().reset_index()
+            topX = sel_animals
+
+            chemicals = chemicals[chemicals['Animal Name'].isin(topX)].sort_values(by=['Animal Name', 'Chemical', 'Tox Exposure Category'])
+
+            max_chem = len(chemicals['Chemical'].unique())
+            if max_chem > 1:
+                num_chem = st.slider('\# of Chemicals', value=min((10, max_chem)), min_value=1, max_value=max_chem)
+                topX = chemicals.groupby(['Chemical']).count() \
+                            .sort_values('Animal Name', ascending=False)[:num_chem]
+                topX = list(topX.index)
+                chemicals = chemicals[chemicals['Chemical'].isin(topX)].sort_values(by=['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique'])
+
+            #st.write(chemicals)
+
+            animals = list(chemicals['Animal Name'].unique())
+            toxins = list(chemicals['Chemical'].unique())
+            categories = list(chemicals['Tox Exposure Category'].unique())
+
+            # each entry is a dict w/three entries: souce, target, value
+            # source: toxin index, exposure: exposures index, value: # of counts
+            tox_links = chemicals[['Animal Name', 'Chemical', 'Tox Exposure Technique']].to_dict('records')
+            cat_links = chemicals[['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique' ]].to_dict('records')
+
+            colors = ['cyan']*len(animals) + ['salmon']*len(toxins) + ['green']*len(categories)
+
+            labels = list(animals) + list(toxins) +  list(categories)
+            source = [animals.index(link['Animal Name']) for link in tox_links]
+            source = source + [len(animals) + toxins.index(link['Chemical']) for link in cat_links]
+            target = [len(animals) + toxins.index(link['Chemical']) for link in tox_links]
+            target = target + [len(animals) + len(toxins) + categories.index(link['Tox Exposure Category']) for link in cat_links]
+
+            value = [link['Tox Exposure Technique'] for link in tox_links]
+            value = value + [link['Tox Exposure Technique'] for link in cat_links]
+
+            #animal_dim = go.parcats.Dimension(
+            #    values = chemicals['Animal Name'],
+            #    label = 'Animal Name'
+            #)
+
+            #chem_dim = go.parcats.Dimension(
+            #    values = chemicals['Chemical'],
+            #    label = 'Chemical'
+            #)
+
+            #cat_dim = go.parcats.Dimension(
+            #    values = chemicals['Tox Exposure Category'],
+            #    label = 'Exposure Category'
+            #)
+
+            #tox_dim = go.parcats.Dimension(
+            #    values = list(chemicals['Tox Exposure Technique'].unique()),
+            #    label = 'Exposure Technique'
+            #)
+
+            #fig = go.Figure(data = [go.Parcats(
+            #    dimensions = [animal_dim, chem_dim, cat_dim],
+            #    hoverinfo = 'count',
+            #    line = {'shape': 'hspline'},
+            #    )])
+
+            fig = go.Figure(data=[go.Sankey(
+                arrangement = 'perpendicular',
+                node = dict(
+                    pad = 5,
+                    thickness = 20,
+                    line = dict(color = 'black', width=0.5),
+                    label = labels,
+                    color = colors
+                ),
+                link = dict(
+                    source = source,
+                    target = target,
+                    value = value,
+                    hovercolor = 'rgba(255, 215, 0, 0.5)',
+                ))])
+
+            st.plotly_chart(fig)
+            
 
     else:
         st.header(f'Top Animals, Chemicals, and Exposure')
