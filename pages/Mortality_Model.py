@@ -48,8 +48,6 @@ def predict_with_loaded_models(models, input_data):
     # Step 2: Predict endpoint value
     X2 = data[models['metadata']['feature_columns']['model2']]
     endpoint_values = models['endpoint_val'].predict(X2)
-    log_value = endpoint_values[0][0]
-    direct_value = endpoint_values[0][1]
     
     # Step 3: Predict units
     X3 = data[models['metadata']['feature_columns']['model3']]
@@ -58,18 +56,15 @@ def predict_with_loaded_models(models, input_data):
     
     return {
         'endpoint_type': endpoint_type,
-        'endpoint_value_log': log_value,
-        'endpoint_value_direct': direct_value,
+        'endpoint_value_direct': endpoint_values[0],
         'endpoint_units': units,
-        'endpoint_value_from_log': np.exp(log_value)
     }
 
 def get_shap_values(models, input):
     model = models['endpoint_val']
     feature_columns = models['metadata']['feature_columns']['model2']
     X = input[feature_columns]
-    base_estimator = model.estimators_[0]  # For first output (log value)
-    explainer = shap.TreeExplainer(base_estimator)
+    explainer = shap.TreeExplainer(model)
     shap_values = explainer(X)
     return explainer, shap_values
 
@@ -226,10 +221,10 @@ def main():
             
         # Make prediction
         predictions = predict_with_loaded_models(models, input_data)
+        st.write(predictions)
         explainer,shap_values = get_shap_values(models, input_data)
         feature_names_list = models['metadata']['feature_columns']['model2']
 
-        st.write(predictions)
 
         st.subheader("📊 Waterfall Plot")
         fig1, ax1 = plt.subplots(figsize=(10, 6))
