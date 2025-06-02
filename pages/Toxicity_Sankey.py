@@ -422,7 +422,10 @@ def chart_fragment():
     else:
         st.header(f'Top Animals, Chemicals, and Exposure')
 
-        num_anim = st.slider('\# of Animals', value=5, min_value=1, max_value=25)
+        col1, col2 = st.columns(2)
+
+        with col1:
+            num_anim = st.slider('\# of Animals', value=5, min_value=1, max_value=25)
 
         chemicals = data.groupby(['Animal Name', 'Chemical', 'Tox Exposure Category']).count().reset_index()
         #chemicals = data.sort_values(by=['Chemical', 'Tox Exposure Category', 'Tox Exposure Technique'])
@@ -432,7 +435,9 @@ def chart_fragment():
 
         chemicals = chemicals[chemicals['Animal Name'].isin(topX)].sort_values(by=['Animal Name', 'Chemical', 'Tox Exposure Category'])
 
-        num_chem = st.slider('\# of Chemicals', value=5, min_value=1, max_value=15)
+        with col2:
+            num_chem = st.slider('\# of Chemicals', value=5, min_value=1, max_value=15)
+
         topX = chemicals.groupby(['Chemical']).count() \
                     .sort_values('Tox Exposure Technique', ascending=False)[:num_chem]
         topX = list(topX.index)
