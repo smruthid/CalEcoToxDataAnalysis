@@ -703,10 +703,10 @@ css = (
     white-space: pre;
 }
 .path {
-    fill: rgb(150, 150, 150) !important;
+    fill: rgb(150, 150, 150) /*!important*/;
 }
 .path:hover {
-    fill: rgba(255, 215, 0, 0.5) !important;
+    fill: rgba(225, 185, 0, 0.6) !important;
 }
 """
 )

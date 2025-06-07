@@ -1,3 +1,23 @@
+const bandrectMEnter = (e) => {
+  let bandrect = e.target
+  let paths = bandrect.__data__.paths
+  paths.forEach(
+    (path) => {
+      path.style.fill='rgba(225, 185, 0, 0.6)'
+    }
+  )
+}
+
+const bandrectMLeave = (e) => {
+  let bandrect = e.target
+  let paths = bandrect.__data__.paths
+  paths.forEach(
+    (path) => {
+      path.style.fill='rgb(150, 150, 150)'
+    }
+  )
+}
+
 window.addEventListener('load', function() {
   //let dimensions = window.parent.document.querySelectorAll('g.dimension')
   //dimensions.forEach(
@@ -9,9 +29,9 @@ window.addEventListener('load', function() {
     //console.log('bing!')
     let dimensions = window.parent.document.querySelectorAll('g.dimension')
 
+    // Recolor each dimension to be a different color
     dimensions.forEach(
       (dimension) => {
-        // Recolor each dimension to be a different color
         //console.log(dimension.__data__['model']['dimensionLabel'])
         //console.log(dimension)
         //console.log(bandrects)
@@ -33,6 +53,7 @@ window.addEventListener('load', function() {
       }
     )
 
+    // Ensure labels are towards the "inside" of the chart
     const dimsort = (dimA, dimB) => {
       return dimA.getBoundingClientRect().x - dimB.getBoundingClientRect().x
     }
@@ -78,6 +99,44 @@ window.addEventListener('load', function() {
     //    setLabel(dimension, false)
     //  }
     //)
+
+    // ensure paths are properly highlighted when necessary
+    
+    // create function to find paths associated with a bandrect
+    const paths = Array.from(window.parent.document.querySelectorAll('path.path'))
+    const getCatPaths = (bandrect, paths) => {
+      let dimInd = bandrect.__data__.categoryViewModel.model.dimensionInd
+      let catInd = bandrect.__data__.categoryViewModel.model.categoryInd
+
+      //console.log(dimInd)
+      //console.log(catInd)
+      //console.log(paths)
+
+      let cat_paths = paths.filter( 
+        (path) => {
+          return path.__data__.model.categoryInds[dimInd] == catInd
+        }
+      )
+      //console.log(cat_paths)
+      return cat_paths
+    }
+
+    // for each bandrect
+    const bandrects = window.parent.document.querySelectorAll('rect.bandrect')
+    bandrects.forEach( 
+      (bandrect) => {
+
+        // set its associated paths
+        let bandpaths = getCatPaths(bandrect, paths)
+        bandrect.__data__.paths = bandpaths
+
+        // set callback functions for mouseEnter/mouseLeave
+        bandrect.removeEventListener("mouseenter", bandrectMEnter)
+        bandrect.removeEventListener("mouseleave", bandrectMLeave)
+        bandrect.addEventListener("mouseenter", bandrectMEnter)
+        bandrect.addEventListener("mouseleave", bandrectMLeave)
+      }
+    )
 
     observer.observe(targetchart, config)
   }
