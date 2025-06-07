@@ -421,7 +421,7 @@ if sel_animals is not None:
             )],
             layout=dict(
                 height=500,
-                #margin=dict(l=100, r=75),
+                margin=dict(l=30, r=30),
             )
         )
 
@@ -532,7 +532,7 @@ if sel_animals is not None:
             ),
             )],
             layout=dict(
-                #margin=dict(l=150, r=75, b=5),
+                margin=dict(l=30, r=30),
             )
         )
 
@@ -641,7 +641,7 @@ else:
         )],
         layout=dict(
             height=500,
-            #margin=dict(l=150, r=75),
+            margin=dict(l=30, r=30),
         )
     )
 
