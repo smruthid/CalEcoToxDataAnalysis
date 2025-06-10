@@ -7,10 +7,13 @@ import streamlit.components.v1 as components
 
 import plotly.graph_objects as go
 
+st.set_page_config(layout = 'wide')
+
 st.title("Toxicity Sankey")
 st.write(
     "For each species, show the studies per chemical and exposure type."
 )
+
 
 ############################################
 ############################################
@@ -388,9 +391,9 @@ if sel_animals is not None:
                                 .apply(lambda name: name.replace(' (', '<br>('))
         if num_chem <= 10:
             chemicals['Chemical'] = chemicals['Chemical'].astype(str)\
-                                    .apply(lambda chem: textwrap.fill(chem, width=25).replace('\n', '<br>'))
+                                    .apply(lambda chem: textwrap.fill(chem, width=50).replace('\n', '<br>'))
             chemicals['Tox Exposure Technique'] = chemicals['Tox Exposure Technique'].astype(str)\
-                                    .apply(lambda tech: textwrap.fill(tech, width=20).replace('\n', '<br>'))
+                                    .apply(lambda tech: textwrap.fill(tech, width=50).replace('\n', '<br>'))
 
         toxins = list(chemicals['Chemical'].unique())
         categories = list(chemicals['Tox Exposure Category'].unique())
@@ -413,7 +416,7 @@ if sel_animals is not None:
 
         fig = go.Figure(data = [go.Parcats(
             dimensions = [chem_dim, cat_dim, tox_dim],
-            hovertemplate='%{category}<br><br>Count:%{count}',
+            hovertemplate='%{category}<br><br>Count:%{count}<br>Percentage:%{probability}',
             line = dict(
                 shape='hspline',
                 hovertemplate='Count:%{count}'
@@ -525,7 +528,7 @@ if sel_animals is not None:
 
         fig = go.Figure(data = [go.Parcats(
             dimensions = [animal_dim, chem_dim, cat_dim],
-            hovertemplate='%{category}<br><br>Count:%{count}',
+            hovertemplate='%{category}<br><br>Count:%{count}<br>Percentage:%{probability}',
             line = dict(
                 shape='hspline',
                 hovertemplate='Count:%{count}'
@@ -587,7 +590,7 @@ else:
                                 .apply(lambda name: name.replace(' (', '<br>('))
 
     chemicals['Tox Exposure Technique'] = chemicals['Tox Exposure Technique'].astype(str)\
-                            .apply(lambda tech: textwrap.fill(tech, width=20).replace('\n', '<br>'))
+                            .apply(lambda tech: textwrap.fill(tech, width=50).replace('\n', '<br>'))
 
     #animals = list(chemicals['Animal Name'].unique())
     #toxins = list(chemicals['Chemical'].unique())
@@ -630,7 +633,7 @@ else:
     fig = go.Figure(
         data = [go.Parcats(
             dimensions = [animal_dim, chem_dim, cat_dim],
-            hovertemplate='%{category}<br><br>Count:%{count}',
+            hovertemplate='%{category}<br><br>Count:%{count}<br>Percentage:%{probability}',
             line = dict(
                 shape = 'hspline',
                 hovertemplate='Count:%{count}',
